@@ -11,6 +11,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
 
     .container {
@@ -21,10 +22,17 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
+    .logo {
+      display: block;
+      margin: 0 auto 15px auto;
+      width: 100px;
+    }
+
     h1 {
       text-align: center;
       color: #7c0a02;
       margin-bottom: 25px;
+      font-size: 24px;
     }
 
     .subject {
@@ -42,6 +50,7 @@
       padding: 10px;
       font-size: 16px;
       border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
     button {
@@ -54,6 +63,10 @@
       font-size: 16px;
       cursor: pointer;
       margin-top: 20px;
+    }
+
+    button:hover {
+      opacity: 0.9;
     }
 
     #result {
@@ -70,7 +83,9 @@
 
 <div class="container">
 
-  <h1>Foundation Year GPA Calculator</h1>
+  <img src="logo.png" alt="UOS Logo" class="logo">
+
+  <h1>UOS FY GPA Calculator</h1>
 
   <div class="subject">
     <label>Biology 1 </label>
@@ -83,7 +98,7 @@
   </div>
 
   <div class="subject">
-    <label>Biology 2 </label>
+    <label>Biology 2 (4 CH)</label>
     <select id="bio2"></select>
   </div>
 
@@ -124,7 +139,14 @@
   ];
 
   subjects.forEach(id => {
+
     let select = document.getElementById(id);
+
+    let defaultOption = document.createElement("option");
+    defaultOption.text = "Select Grade";
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    select.appendChild(defaultOption);
 
     for (let grade in grades) {
       let option = document.createElement("option");
