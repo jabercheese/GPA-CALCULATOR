@@ -10,15 +10,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      padding: 20px;
     }
 
     .container {
       background: white;
       padding: 30px;
       border-radius: 15px;
-      width: 350px;
+      width: 380px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
@@ -45,12 +46,13 @@
       font-weight: bold;
     }
 
-    select {
+    select, input {
       width: 100%;
       padding: 10px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
 
     button {
@@ -84,6 +86,24 @@
       color: gray;
       margin-top: 15px;
     }
+
+    .history {
+      margin-top: 30px;
+    }
+
+    .history h2 {
+      font-size: 18px;
+      color: #7c0a02;
+      text-align: center;
+    }
+
+    .entry {
+      background: #f4f6f9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
   </style>
 </head>
 
@@ -93,7 +113,12 @@
 
   <img src="logo.png" alt="UOS Logo" class="logo">
 
-  <h1>UOS FY GPA Calculator</h1>
+  <h1>UOS GPA Calculator</h1>
+
+  <div class="subject">
+    <label>Name</label>
+    <input type="text" id="studentName" placeholder="Enter name">
+  </div>
 
   <div class="subject">
     <label>Biology 1</label>
@@ -123,6 +148,11 @@
   <button onclick="calculateGPA()">Calculate GPA</button>
 
   <div id="result"></div>
+
+  <div class="history">
+    <h2>GPA Log</h2>
+    <div id="historyList"></div>
+  </div>
 
   <p class="credit">Made by Jabir Al-Rawi</p>
 
@@ -168,6 +198,8 @@
 
   function calculateGPA() {
 
+    let name = document.getElementById("studentName").value;
+
     let totalPoints =
       grades[document.getElementById("bio1").value] * 3 +
       grades[document.getElementById("biochem1").value] * 3 +
@@ -179,6 +211,16 @@
 
     document.getElementById("result").innerHTML =
       "Competitive GPA: " + gpa.toFixed(2);
+
+    let historyList = document.getElementById("historyList");
+
+    let entry = document.createElement("div");
+    entry.className = "entry";
+
+    entry.innerHTML =
+      "<strong>" + name + "</strong><br>GPA: " + gpa.toFixed(2);
+
+    historyList.prepend(entry);
   }
 
 </script>
