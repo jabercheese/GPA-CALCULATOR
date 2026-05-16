@@ -76,6 +76,14 @@
       font-weight: bold;
       color: #222;
     }
+
+    .credit {
+      text-align: center;
+      font-size: 11px;
+      font-style: italic;
+      color: gray;
+      margin-top: 15px;
+    }
   </style>
 </head>
 
@@ -85,36 +93,38 @@
 
   <img src="logo.png" alt="UOS Logo" class="logo">
 
-  <h1>UOS FY GPA Calculator</h1>
+  <h1>UOS GPA Calculator</h1>
 
   <div class="subject">
-    <label>Biology 1 </label>
+    <label>Biology 1</label>
     <select id="bio1"></select>
   </div>
 
   <div class="subject">
-    <label>Biochemistry 1 </label>
+    <label>Biochemistry 1</label>
     <select id="biochem1"></select>
   </div>
 
   <div class="subject">
-    <label>Biology 2 (4 CH)</label>
+    <label>Biology 2</label>
     <select id="bio2"></select>
   </div>
 
   <div class="subject">
-    <label>Biochemistry 2 </label>
+    <label>Biochemistry 2</label>
     <select id="biochem2"></select>
   </div>
 
   <div class="subject">
-    <label>Biochemistry Lab </label>
+    <label>Biochemistry Lab</label>
     <select id="lab"></select>
   </div>
 
   <button onclick="calculateGPA()">Calculate GPA</button>
 
   <div id="result"></div>
+
+  <p class="credit">Made by Jabir Al-Rawi</p>
 
 </div>
 
